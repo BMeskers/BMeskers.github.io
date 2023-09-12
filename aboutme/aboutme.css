@@ -1,0 +1,50 @@
+body {
+    background-color: #A0C6B1;
+    color: #5E5548;
+    font-family: "Arial";
+    font-size: 16px;
+    border: 0px solid transparent;
+    border-top: 20px solid #7A7061;
+    border-bottom: 20px solid #7A7061;
+    margin: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+h1 {
+    font-family: "Garamond";
+    font-size: 22px;
+}
+
+p {
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+td {
+    padding: 0px;
+    width: 33%;
+    height: 100%
+}
+
+header {
+    color: white;
+}
+
+.banner-left {
+    background: linear-gradient(to left bottom, #2E8DB6 50%, transparent 50%);
+    text-align: right;
+}
+
+.banner-right {
+    background: linear-gradient(to right bottom, #2E8DB6 50%, transparent 50%);
+}
+
+.photo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
