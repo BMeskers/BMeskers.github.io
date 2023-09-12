@@ -1,0 +1,35 @@
+body {
+    background-color: #234e73;
+    color: #d9d9d9;
+}
+
+h1{
+    font-family: Georgia;
+    font-size:24px;
+}
+
+nav {
+    background-color: #536676;
+    padding: 20px;
+    margin: 20px;
+    width: 400px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+a {
+    font-size:16px;
+    color: #d9d9d9;
+    background-color: #766353;
+    padding: 10px;
+    text-decoration: none;
+    font-family: Verdana;
+    width: 360px;
+    display: inline-block;
+    margin-bottom:10px;
+    text-align: center;
+}
+
+a:hover {
+    background-color: #907a68;
+}
