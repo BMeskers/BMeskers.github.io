@@ -1,0 +1,34 @@
+#grid_container {
+    background-color: #F0F;
+    padding: 10px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas:
+        'a1Tag a1Tag'
+        'a4Tag a3Tag'
+        'a4Tag a2Tag';
+}
+    
+#grid_container > article{
+    background-color: #EEE;
+    border: solid 2px #AAA;
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+}
+
+#a1{
+    grid-area: a1Tag;
+}
+
+#a2 {
+    grid-area: a2Tag;
+}
+
+#a3 {
+    grid-area: a3Tag;
+}
+
+#a4 {
+    grid-area: a4Tag;
+}

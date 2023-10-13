@@ -1,0 +1,191 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+:root {
+    /*Variables to set size etc. based on each other*/
+    --page-width: 1000px;
+    --columns: 12;
+    --margin-size: 20px;
+    --column-size: calc((var(--page-width) - var(--margin-size) * (var(--columns) - 1))/ var(--columns));
+    --header-image-size: calc(4 * var(--column-size) + 3 * var(--margin-size));
+    --button-width: 100px;
+    --button-padding: 5px;
+    --button-border: 1px;
+
+    /*Variables for the colors*/
+    --background-color: #48636F;
+    --main-color: #B09670;
+    --text-color: #002113;
+    --detail-color: #8E7B6C;
+    --attention-color: #198DBF;
+    --detail-selection-color: #B19E90;
+    --link-color: #0000FF;
+    --input-field-color: #FFFFFF;
+    --stroke-detail-color: #000000;
+    
+}
+
+body > header {
+    grid-area: headerTag;
+    /*set the horizontal and vertical radius based on the page size and central image size*/
+    --horizontal-radius: calc((var(--page-width) - var(--header-image-size)) / 2 - var(--margin-size));
+    --vertical-radius: calc(var(--header-image-size) - var(--column-size));
+
+}
+
+body {
+    width: var(--page-width);
+    background-color: var(--background-color);
+    font-size: 16px;
+    display: grid;
+    grid-gap: var(--margin-size);
+    grid-template-areas:
+        'headerTag headerTag headerTag headerTag headerTag headerTag headerTag headerTag headerTag headerTag headerTag headerTag'
+        '. mainTag mainTag mainTag mainTag mainTag mainTag mainTag mainTag mainTag mainTag .'
+        'footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag';
+}
+
+#detail_page_header {
+    --header-image-size: calc(2 * var(--column-size) + var(--margin-size));
+}
+
+#main_navigation > a > img {
+    display: block;
+    width: var(--header-image-size);
+    height: var(--header-image-size);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #0F0;
+}
+
+#main_navigation > ul > li > a {
+    display: block;
+    width: var(--button-width);
+    height: var(--column-size);
+    padding: 0px var(--button-padding) 0px var(--button-padding);
+    border: var(--button-border) solid var(--stroke-detail-color);
+    /*background-color: #F0F;*/
+    text-decoration: none;
+    text-align: center;
+    position: absolute;
+    /*create a transform with the angle of the specific buttons*/
+    top: calc(var(--vertical-radius) * sin(var(--button-position-angle)));
+    left: calc(var(--horizontal-offset) + var(--horizontal-radius) * cos(var(--button-position-angle)));
+    /*rotate the buttons accordingly*/
+    transform: rotate(calc(var(--button-tilt-angle) - 90deg));
+    color: var(--text-color);
+}
+
+.left_button {
+    --horizontal-offset: calc(var(--horizontal-radius) + var(--margin-size));
+}
+
+.right_button {
+    --horizontal-offset: calc(var(--horizontal-radius) + var(--margin-size) + var(--header-image-size) - var(--button-width) - 2 * var(--button-padding) - 2 * var(--button-border));
+}
+
+#home_button_home {
+    --button-position-angle: 170deg;
+    --button-tilt-angle: 165deg;
+}
+
+#page1_button_home {
+    --button-position-angle: 140deg;
+    --button-tilt-angle: 135deg;
+}
+
+#page2_button_home {
+    --button-position-angle: 112deg;
+    --button-tilt-angle: 105deg;
+}
+
+#page3_button_home {
+    --button-position-angle: 68deg;
+    --button-tilt-angle: 75deg;
+}
+
+#page4_button_home {
+    --button-position-angle: 40deg;
+    --button-tilt-angle: 45deg;
+}
+
+#contact_button_home {
+    --button-position-angle: 10deg;
+    --button-tilt-angle: 15deg;
+}
+
+#home_button_detail {
+    --button-position-angle: 168deg;
+    --button-tilt-angle: 125deg;
+}
+
+#page1_button_detail {
+    --button-position-angle: 130deg;
+    --button-tilt-angle: 103deg;
+}
+
+#page2_button_detail {
+    --button-position-angle: 106deg;
+    --button-tilt-angle: 93deg;
+}
+
+#page3_button_detail {
+    --button-position-angle: 74deg;
+    --button-tilt-angle: 87deg;
+}
+
+#page4_button_detail {
+    --button-position-angle: 50deg;
+    --button-tilt-angle: 77deg;
+}
+
+#contact_button_detail {
+    --button-position-angle: 12deg;
+    --button-tilt-angle: 55deg;
+}
+
+.header_background {
+    position: absolute;
+    height: 0px;
+    border-bottom: var(--local-vertical-radius) solid;
+    border-radius: var(--local-horizontal-radius) / 0px 0px var(--local-vertical-radius) var(--local-vertical-radius);
+}
+
+#header_front_background {
+    width: calc(var(--page-width) - 2 * var(--margin-size) - 2 * var(--column-size));
+    --local-vertical-radius: calc(var(--header-image-size) - var(--column-size));
+    --local-horizontal-radius: calc(var(--horizontal-radius) - var(--column-size));
+    border-bottom-color:  var(--main-color);
+    left: calc(var(--margin-size) + var(--column-size));
+    z-index: -1;    
+}
+
+#header_middle_background {
+    width: calc(var(--page-width) - 2 * var(--margin-size));
+    --local-vertical-radius: var(--header-image-size);
+    --local-horizontal-radius: var(--horizontal-radius);
+    border-bottom-color: var(--detail-color);
+    left: var(--margin-size);
+    z-index: -2;
+}
+
+#header_border_background {
+    width: var(--page-width);
+    --local-vertical-radius: calc(var(--header-image-size) + var(--margin-size));
+    --local-horizontal-radius: calc(var(--horizontal-radius) + var(--margin-size));
+    border-bottom-color: var(--main-color);
+    z-index: -3;
+}
+
+main {
+    background-color: var(--main-color);
+    grid-area: mainTag;
+}
+
+footer {
+    background-color: var(--main-color);
+    grid-area: footerTag;
+}

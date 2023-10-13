@@ -87,14 +87,12 @@ img {
 }
 
 #compay_aside > a > img {
-    width: 30%;
+    width: 200px;
 }
-
-
-    main {
-        clear: both;
-        width: 100%;
-    }
+main {
+    clear: both;
+    width: 100%;
+}
 
 main > .main_article {
     width: 50%;
