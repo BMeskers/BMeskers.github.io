@@ -1,0 +1,36 @@
+# {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        'headerTag'
+        'mainTag'
+        'footerTag';
+}
+
+body > header {
+    grid-area: headerTag;
+}
+
+main {
+    grid-area: mainTag;
+    display: grid;
+    grid-template-areas:
+        'articleTag articleTag articleTag sidebarTag'
+}
+
+main > article {
+    grid-area: articleTag;
+}
+
+main > aside {
+    grid-area: sidebarTag;
+}
+
+body > footer {
+    grid-area: footerTag;
+}
