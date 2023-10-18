@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koh+Santepheap&display=swap');
 
 * {
     padding: 0px;
     margin: 0px;
     border: 0px;
-    font-size: 16px;
     font-family: 'Noto Sans Khmer', sans-serif;
     font-size: 20px;
     color: var(--text-color);
@@ -37,7 +37,8 @@ a {
     --text-color: #002113;
     --detail-color: #8E7B6C;
     --attention-color: #198DBF;
-    --detail-selection-color: #B19E90;
+    --detail-selection-color: var(--main-color);
+    /*--detail-selection-color: #B19E90;*/
     --link-color: #0000FF;
     --input-field-color: #FFFFFF;
     --stroke-detail-color: #000000;
@@ -73,6 +74,10 @@ body {
     background-color: #0F0;
 }
 
+#main_navigation > ul {
+    list-style-type: none;
+}
+
 #main_navigation > ul > li > a {
     display: flex;
     width: var(--button-width);
@@ -93,6 +98,15 @@ body {
     justify-content: center;
     font-family: 'Jacques Francois', serif;
     font-size: 28px;
+    border-radius: var(--margin-size);
+}
+
+#selected_button > a {
+    background-color: var(--detail-selection-color);
+}
+
+#main_navigation > ul > li > a:hover {
+    background-color: var(--detail-selection-color);
 }
 
 .left_button {
@@ -166,18 +180,42 @@ body {
     z-index: -3;
 }
 
-#main_background {
+p > a {
+    color: var(--link-color);
+}
+
+.main_background {
     background-color: var(--main-color);
     position: absolute;
     width: calc(var(--column-size) * 10 + var(--margin-size) * 9);
     left: calc(var(--column-size) + var(--margin-size));
-    height: 100%;
     z-index: -4
+}
+
+#main_background_top {
+    height: calc(var(--header-image-size) + 2 * var(--margin-size));
+}
+
+#main_background_bottom {
+    height: var(--margin-size);
+    position: relative;
+    top: calc(-2 * var(--margin-size));
 }
 
 main {
     grid-area: mainTag;
     padding: var(--margin-size) 0px;
+    background-color: var(--main-color);
+}
+
+main > h1 {
+    font-family: 'Koh Santepheap', serif;
+    font-size: 40px;
+}
+
+main > h2 {
+    font-family: 'Koh Santepheap', serif;
+    font-size: 28px;
 }
 
 #home_main {
@@ -200,16 +238,89 @@ main {
     width: calc(4 * var(--column-size) + 3 * var(--margin-size));
 }
 
-    #home_main > a {
-        grid-area: mainHomeLinkTag;
-        background-color: var(--attention-color);
-        height: 3em;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Jacques Francois', serif;
-        font-size: 28px;
-    }
+#home_main > a {
+    grid-area: mainHomeLinkTag;
+    background-color: var(--attention-color);
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Jacques Francois', serif;
+    font-size: 28px;
+}
+
+#detail_main > * {
+    margin: 0px calc(var(--column-size) + var(--margin-size));
+    margin-bottom: var(--margin-size);
+    display: inline-block;
+    width: calc(8 * var(--column-size) + 7 * var(--margin-size));
+}
+
+#detail_main > h2 {
+    margin-top: var(--margin-size);
+}
+
+#detail_main > ul {
+    list-style-position: inside;
+}
+
+#detail_main > article {
+    /*8 columns*/
+    /*10 columns*/
+    display: grid;
+    grid-gap: var(--margin-size);
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-areas:
+        'articleParagraphTag articleParagraphTag articleParagraphTag articleParagraphTag articleParagraphTag articleImageTag articleImageTag articleImageTag';
+}
+
+#detail_main > article > p {
+    grid-area: articleParagraphTag;
+}
+
+#detail_main > article > img {
+    grid-area: articleImageTag;
+    width: 100%;
+}
+
+#detail_main > form > * {
+    margin-bottom: var(--margin-size);
+}
+
+.text_input_label {
+    float: left;
+    width: calc(2 * var(--column-size) + var(--margin-size));
+}
+
+.text_input {
+    float: right;
+    width: calc(6 * var(--column-size) + 5 * var(--margin-size));
+    background-color: var(--input-field-color);
+    border: 1px solid var(--stroke-detail-color);
+}
+
+#message_input_label {
+    float: left;
+    margin-top: var(--margin-size);
+}
+
+#message_input {
+    float: left;
+    width: calc(8 * var(--column-size) + 7 * var(--margin-size));
+    height: calc(2 * var(--column-size) + var(--margin-size));
+    resize: none;
+    border: 1px solid var(--stroke-detail-color);
+}
+
+
+#submit_button {
+    float: left;
+    background-color: var(--attention-color);
+    width: calc(2 * var(--column-size) + var(--margin-size));
+    height: 2em;
+    font-family: 'Jacques Francois', serif;
+    font-size: 28px;
+}
 
 body > footer {
     background-color: var(--main-header-color);
