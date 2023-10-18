@@ -1,23 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&display=swap');
+
 * {
     padding: 0px;
     margin: 0px;
     border: 0px;
+    font-size: 16px;
+    font-family: 'Noto Sans Khmer', sans-serif;
+    font-size: 20px;
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
 }
 
 :root {
     /*Variables to set size etc. based on each other*/
-    --page-width: 1000px;
+    --page-width: 1440px;
     --columns: 12;
     --margin-size: 20px;
     --column-size: calc((var(--page-width) - var(--margin-size) * (var(--columns) - 1))/ var(--columns));
     --header-image-size: calc(4 * var(--column-size) + 3 * var(--margin-size));
-    --button-width: 100px;
+    --button-width: 150px;
     --button-padding: 5px;
-    --button-border: 1px;
-
+    --button-border: 0px;
+    --header-image-border: 1px;
+    /*set the horizontal and vertical radius based on the page size and central image size*/
+    --header-image-size: calc(2 * var(--column-size) + var(--margin-size));
+    --horizontal-radius: calc((var(--page-width) - var(--header-image-size)) / 2 - var(--margin-size));
+    --vertical-radius: calc(var(--header-image-size) - var(--column-size));
     /*Variables for the colors*/
     --background-color: #48636F;
-    --main-color: #B09670;
+    --main-header-color: #B09670;
+    --main-color: #BCA788;
     --text-color: #002113;
     --detail-color: #8E7B6C;
     --attention-color: #198DBF;
@@ -25,14 +41,11 @@
     --link-color: #0000FF;
     --input-field-color: #FFFFFF;
     --stroke-detail-color: #000000;
-    
 }
 
 body > header {
     grid-area: headerTag;
-    /*set the horizontal and vertical radius based on the page size and central image size*/
-    --horizontal-radius: calc((var(--page-width) - var(--header-image-size)) / 2 - var(--margin-size));
-    --vertical-radius: calc(var(--header-image-size) - var(--column-size));
+    /*adjust the height for layout of subsequent elements*/
     height: calc(var(--header-image-size) + var(--margin-size));
 }
 
@@ -40,7 +53,6 @@ body {
     width: var(--page-width);
     background-color: var(--background-color);
     font-size: 16px;
-
     /*12 columns*/
     display: grid;
     grid-gap: var(--margin-size);
@@ -51,21 +63,18 @@ body {
         'footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag footerTag';
 }
 
-#detail_page_header {
-    --header-image-size: calc(2 * var(--column-size) + var(--margin-size));
-}
-
 #main_navigation > a > img {
     display: block;
-    width: var(--header-image-size);
-    height: var(--header-image-size);
+    width: calc(var(--header-image-size) - 2 * var(--header-image-border));
+    height: calc(var(--header-image-size) - 2 * var(--header-image-border));
+    border: var(--header-image-border) solid var(--stroke-detail-color);
     margin-left: auto;
     margin-right: auto;
     background-color: #0F0;
 }
 
 #main_navigation > ul > li > a {
-    display: block;
+    display: flex;
     width: var(--button-width);
     height: var(--column-size);
     padding: 0px var(--button-padding) 0px var(--button-padding);
@@ -80,11 +89,10 @@ body {
     /*rotate the buttons accordingly*/
     transform: rotate(calc(var(--button-tilt-angle) - 90deg));
     color: var(--text-color);
-}
-
-#main_navigation > ul > li > a > span {
-    display: block;
-    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Jacques Francois', serif;
+    font-size: 28px;
 }
 
 .left_button {
@@ -95,62 +103,32 @@ body {
     --horizontal-offset: calc(var(--horizontal-radius) + var(--margin-size) + var(--header-image-size) - var(--button-width) - 2 * var(--button-padding) - 2 * var(--button-border));
 }
 
-#home_button_home {
-    --button-position-angle: 170deg;
-    --button-tilt-angle: 165deg;
-}
-
-#page1_button_home {
-    --button-position-angle: 140deg;
-    --button-tilt-angle: 135deg;
-}
-
-#page2_button_home {
-    --button-position-angle: 112deg;
-    --button-tilt-angle: 105deg;
-}
-
-#page3_button_home {
-    --button-position-angle: 68deg;
-    --button-tilt-angle: 75deg;
-}
-
-#page4_button_home {
-    --button-position-angle: 40deg;
-    --button-tilt-angle: 45deg;
-}
-
-#contact_button_home {
-    --button-position-angle: 10deg;
-    --button-tilt-angle: 15deg;
-}
-
-#home_button_detail {
+#home_button {
     --button-position-angle: 168deg;
     --button-tilt-angle: 125deg;
 }
 
-#page1_button_detail {
+#page1_button {
     --button-position-angle: 130deg;
     --button-tilt-angle: 103deg;
 }
 
-#page2_button_detail {
+#page2_button {
     --button-position-angle: 106deg;
     --button-tilt-angle: 93deg;
 }
 
-#page3_button_detail {
+#page3_button {
     --button-position-angle: 74deg;
     --button-tilt-angle: 87deg;
 }
 
-#page4_button_detail {
+#page4_button {
     --button-position-angle: 50deg;
     --button-tilt-angle: 77deg;
 }
 
-#contact_button_detail {
+#contact_button {
     --button-position-angle: 12deg;
     --button-tilt-angle: 55deg;
 }
@@ -166,14 +144,14 @@ body {
     width: calc(var(--page-width) - 2 * var(--margin-size) - 2 * var(--column-size));
     --local-vertical-radius: calc(var(--header-image-size) - var(--column-size));
     --local-horizontal-radius: calc(var(--horizontal-radius) - var(--column-size));
-    background-color:  var(--main-color);
+    background-color:  var(--main-header-color);
     left: calc(var(--margin-size) + var(--column-size));
     z-index: -1;    
 }
 
 #header_middle_background {
     width: calc(var(--page-width) - 2 * var(--margin-size));
-    --local-vertical-radius: var(--header-image-size);
+    --local-vertical-radius: calc(var(--header-image-size) - 1px);
     --local-horizontal-radius: var(--horizontal-radius);
     background-color: var(--detail-color);
     left: var(--margin-size);
@@ -184,13 +162,22 @@ body {
     width: var(--page-width);
     --local-vertical-radius: calc(var(--header-image-size) + var(--margin-size));
     --local-horizontal-radius: calc(var(--horizontal-radius) + var(--margin-size));
-    background-color: var(--main-color);
+    background-color: var(--main-header-color);
     z-index: -3;
 }
 
-main {
+#main_background {
     background-color: var(--main-color);
+    position: absolute;
+    width: calc(var(--column-size) * 10 + var(--margin-size) * 9);
+    left: calc(var(--column-size) + var(--margin-size));
+    height: 100%;
+    z-index: -4
+}
+
+main {
     grid-area: mainTag;
+    padding: var(--margin-size) 0px;
 }
 
 #home_main {
@@ -201,6 +188,7 @@ main {
     grid-template-areas:
         '. mainHomeTextTag mainHomeTextTag mainHomeTextTag mainHomeTextTag mainHomeTextTag mainHomeTextTag mainHomeTextTag mainHomeTextTag .'
         '. mainHomeImageTag mainHomeImageTag mainHomeImageTag mainHomeImageTag . mainHomeLinkTag mainHomeLinkTag mainHomeLinkTag .';
+    align-items: center;
 }
 
 #home_main > p {
@@ -209,14 +197,39 @@ main {
 
 #home_main > img {
     grid-area: mainHomeImageTag;
-    width: calc(4 * var(--column-size) + 3 * var(--margin-size))
+    width: calc(4 * var(--column-size) + 3 * var(--margin-size));
 }
 
-#home_main > a {
-    grid-area: mainHomeLinkTag
-}
+    #home_main > a {
+        grid-area: mainHomeLinkTag;
+        background-color: var(--attention-color);
+        height: 3em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Jacques Francois', serif;
+        font-size: 28px;
+    }
 
-footer {
-    background-color: var(--main-color);
+body > footer {
+    background-color: var(--main-header-color);
     grid-area: footerTag;
+    padding: var(--margin-size) 0px;
+}
+
+body > footer > nav {
+    margin-left: calc(var(--column-size) + var(--margin-size));
+}
+
+body > footer > nav > a {
+    color: var(--text-color);
+    display: inline-block;
+    width: var(--column-size);
+    float: left;
+    margin-right: var(--margin-size);
+}
+
+body > footer > aside {
+    float: right;
+    margin-right: calc(var(--column-size) + var(--margin-size));
 }
