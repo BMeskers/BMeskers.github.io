@@ -49,6 +49,19 @@ a {
     --stroke-detail-color: #000000;
 }
 
+/*To make it 'responsive'*/
+@media screen and (max-width: 768px){
+    * {
+        font-size: 10px;
+    }
+
+    :root {
+        --page-width: 768px;
+        --margin-size: 10px;
+        --button-width: 75px;
+    }
+}
+
 body > header {
     grid-area: headerTag;
     /*adjust the height for layout of subsequent elements*/
@@ -58,7 +71,6 @@ body > header {
 body {
     width: var(--page-width);
     background-color: var(--background-color);
-    font-size: 16px;
     /*12 columns*/
     display: grid;
     grid-gap: var(--margin-size);
@@ -102,7 +114,7 @@ body {
         align-items: center;
         justify-content: center;
         font-family: 'Jacques Francois', serif;
-        font-size: 28px;
+        font-size: 1.5em;
         border-radius: var(--margin-size);
     }
 
@@ -217,12 +229,12 @@ main {
 
 main > h1 {
     font-family: 'Koh Santepheap', serif;
-    font-size: 40px;
+    font-size: 2em;
 }
 
 main > h2 {
     font-family: 'Koh Santepheap', serif;
-    font-size: 28px;
+    font-size: 1.5em;
 }
 
 main > table > tbody > tr > th:first-letter {
@@ -253,8 +265,11 @@ main > table > tbody > tr:nth-child(odd) {
     font-size: 1rem;
 }
 
-#home_main > img {
+#home_main > figure {
     grid-area: mainHomeImageTag;
+}
+
+#home_main > figure > img {
     width: calc(4 * var(--column-size) + 3 * var(--margin-size));
 }
 
@@ -266,7 +281,7 @@ main > table > tbody > tr:nth-child(odd) {
     align-items: center;
     justify-content: center;
     font-family: 'Jacques Francois', serif;
-    font-size: 28px;
+    font-size: 1.5em;
 }
 
 #detail_main > * {
@@ -339,7 +354,7 @@ main > table > tbody > tr:nth-child(odd) {
     width: calc(2 * var(--column-size) + var(--margin-size));
     height: 2em;
     font-family: 'Jacques Francois', serif;
-    font-size: 28px;
+    font-size: 1.5em;
 }
 
 body > footer {
